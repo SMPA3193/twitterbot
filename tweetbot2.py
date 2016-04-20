@@ -1,15 +1,15 @@
 from twython import Twython
 import csv
 
-APP_KEY = ''
-APP_SECRET = ''
-OAUTH_TOKEN = ''
-OAUTH_TOKEN_SECRET = ''
+CONSUMER_KEY = ''
+CONSUMER_SECRET = ''
+ACCESS_TOKEN = ''
+ACCESS_TOKEN_SECRET = ''
 
-t = Twython(app_key=APP_KEY, app_secret=APP_SECRET, oauth_token=OAUTH_TOKEN, oauth_token_secret=OAUTH_TOKEN_SECRET)
+twitter = Twython(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 
-search=t.search(q='propublica', count="100")
-tweets= search['statuses']
+search = twitter.search(q='propublica', count="100")
+tweets = search['statuses']
 
 with open ('data.csv', 'w') as fp:
     a = csv.writer(fp)
