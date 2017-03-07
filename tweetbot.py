@@ -7,9 +7,11 @@ ACCESS_TOKEN_SECRET = ''
 
 twitter = Twython(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 
-try:
-    twitter.update_status(status='See how easy this was?')
-except TwythonError as e:
-    print e
+
+for number in [1,2,3]:
+    try:
+        twitter.update_status(status='% times % = %' % [number, number, number*number])
+    except TwythonError as e:
+        print e
 
 # read from csv
