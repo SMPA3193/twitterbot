@@ -21,5 +21,5 @@ with open ('data.csv', 'w') as fp:
             url = result['entities']['urls'][0]['expanded_url']
         except:
             url = None
-        text=[['propublica', result['text'].encode('utf-8'), url]]
+        text=[['YOUR SEARCH TERM', result['text'].encode('utf-8'), url]]
         a.writerows((text))
