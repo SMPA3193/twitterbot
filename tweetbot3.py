@@ -1,3 +1,4 @@
+import requests
 from twython import Twython, TwythonError
 
 CONSUMER_KEY = ''
@@ -7,11 +8,10 @@ ACCESS_TOKEN_SECRET = ''
 
 twitter = Twython(CONSUMER_KEY, CONSUMER_SECRET, ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
 
+r = requests.get("https://analytics.usa.gov/data/live/realtime.json")
 
-for number in [1,2,3]:
-    try:
-        twitter.update_status(status='% times % = %' % [number, number, number*number])
-    except TwythonError as e:
-        print e
+try:
+    twitter.update_status(status='Total Visitors Online: %s' % r.json()['data'][0]['active_visitors'])
+except TwythonError as e:
+    print e
 
-# read from csv
